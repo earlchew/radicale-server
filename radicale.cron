@@ -1,2 +1,2 @@
-*/3 * * * *  exec /home/ubuntu/bin/onlyone /home/ubuntu/bin/radicale earl
-*/3 * * * *  exec /home/ubuntu/bin/onlyone /home/ubuntu/bin/sshtunnel-52321-web.timberdragon.com
+*/3 * * * *  exec "$HOME/bin/onlyone" "$HOME/bin/radicale" earl
+*/3 * * * *  exec "$HOME/bin/onlyone" "$HOME/bin/sshtunnel-52321-web.timberdragon.com"
