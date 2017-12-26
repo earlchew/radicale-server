@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -eu
+
+[ -z "${0##/*}" ] || exec "$PWD/$0" "$@"
+[ ! -h "$0" ]     || exec "$(readlink -f "$0")" "$@"
+
+say()
+{
+    printf '%s\n' "$1"
+}
+
+usage()
+{
+    say "usage: $0 user" >&2
+    exit 1
+}
+
+[ $# -eq 1 ] || usage
+
+export REMOTE_USER="$1"
+export PYTHONPATH="${0%/*}/lib${PYTHONPATH+:$PYTHONPATH}"
+
+cd "${0%/*}"
+
+set --
+set -- "$@" --config "$PWD/radicale.cfg"
+
+umask 027
+
+exec python3 -m radicale "$@"
